@@ -9,7 +9,11 @@ jobs:
         with:
           username: ${{ vars.MY_DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and Tag Image
+        run: 
+         IMAGE_NAME=$(echo "lehlohonoloivan@gmail.com/my-app" | tr '[:upper:]' '[:lower:]')
+         TAG_NAME="${{ github.sha }}"
       - name: Build and Push
         run: | 
-          docker build -t lehlohonoloivan@gmail.com/my-app:${{ github.sha }} .
-          docker push lehlohonoloivan@gmail.com/my-app:${{ github.sha }}
+          docker build -t "$IMAGE_NAME:$TAG_NAME" .
+          docker push "$IMAGE_NAME:$TAG_NAME"
