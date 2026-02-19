@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Login to DockerHub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.MY_DOCKER_USER }}" --password-stdin
       - name: Build and Push
         run: | 
           docker build -t lehlohonoloivan@gmail.com/my-app:${{ github.sha }} .
