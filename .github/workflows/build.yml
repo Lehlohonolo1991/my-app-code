@@ -21,7 +21,7 @@ jobs:
         run: |
           # Use your DockerHub USERNAME here, not your email!
           # We force it to lowercase just to be safe.
-          DOCKER_USER=$(echo "${{ vars.MY_DOCKER_USER }}" | tr '[:upper:]' '[:lower:]')
+          DOCKER_USER=$(echo "${{ vars.MY_DOCKER_USERNAME }}" | tr '[:upper:]' '[:lower:]')
           IMAGE_NAME="$DOCKER_USER/my-app"
           TAG="${{ github.sha }}"
           
