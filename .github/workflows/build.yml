@@ -14,7 +14,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ vars.MY_DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # 3. Build and Push in a single step to keep variables alive
       - name: Build and Push Image
