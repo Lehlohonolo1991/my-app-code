@@ -4,9 +4,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Login to DockerHub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ vars.MY_DOCKER_USER }}" --password-stdin
+        uses: docker/checkout@v2
+        with:
+          username: ${{ vars.MY_DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and Push
         run: | 
           docker build -t lehlohonoloivan@gmail.com/my-app:${{ github.sha }} .
